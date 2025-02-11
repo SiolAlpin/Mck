@@ -1,0 +1,653 @@
+
+
+@font-face {
+  font-family: 'CelticMD';
+  src: url('/fonts/celticmd.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'CelticHD';
+  src: url('/fonts/CELTICHD.ttf') format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(120deg, #f7f7f7, #eaeaea);
+  color: #333;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: Arial, sans-serif;
+}
+header {
+  color: #333;
+ 
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: block; /* Change flex to block for better control */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the width calculation */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;  /* Align images and text vertically */
+  justify-content: space-between;  /* Space out the images and text */
+  width: 100%;
+  padding: 0 20px;  /* Add some padding on the sides */
+}
+
+.header-image {
+  width: 5vw;  /* Smaller size based on viewport width */
+  height: auto;  /* Maintain aspect ratio */
+  object-fit: contain;
+  margin-top: 10px;  /* Default smaller top spacing */
+  margin-bottom: 10px;  /* Default smaller top spacing */
+  margin-left: auto;  /* Center the image horizontally */
+  margin-right: auto;  /* Center the image horizontally */
+  display: block;  /* Ensure it behaves like a block element */
+  transition: width 0.3s ease, margin-top 0.3s ease, margin-bottom 0.3s ease; 
+}
+
+/* For screens smaller than 768px (Tablets) */
+@media (max-width: 768px) {
+  .header-image {
+    width: 7vw;  /* Even smaller images for tablets */
+    margin-top: 8px;  /* Smaller top spacing for tablets */
+  }
+}
+
+/* For screens smaller than 480px (Phones) */
+@media (max-width: 480px) {
+  .header-image {
+    width: 10vw;  /* Smallest images for phones */
+    margin-top: 5px;  /* Even smaller top spacing for phones */
+  }
+}
+
+
+header h1 {
+  font-size: 2.6em;
+  text-align: center;
+  font-family: 'CelticHD', sans-serif;
+}
+@media (max-width: 768px) {
+  header {
+    justify-content: space-between; /* Keep the same spacing behavior */
+  }
+
+  header h1 {
+    font-size: 1.5em; /* Reduce font size on smaller screens */
+  }
+}
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.homeimg {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+.homeimg img {
+  width: 100%; /* Make the images responsive */
+  height: auto;
+  object-fit: cover;
+}
+
+
+
+
+nav {
+  margin-right: 0px;
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* Align links to the right */
+  background-image: url('/images/tartan.png');
+  opacity: 88%;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: transform 0.3s, color 0.3s;
+  font-size: 1em; /* Default font size */
+}
+
+nav a:hover {
+  color: #ffc8c8;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  nav {
+    margin-right: 0px; /* Reduce margin on smaller screens */
+    gap: 15px; /* Reduce the gap between links */
+  }
+
+  nav a {
+    font-size: 0.9em; /* Reduce font size for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    margin-right: 0px; /* Further reduce margin for small screens */
+    gap: 10px; /* Further reduce the gap between links */
+    justify-content: center; /* Center links on mobile */
+  }
+
+  nav a {
+    font-size: 0.71em; /* Further reduce font size for mobile */
+  }
+}
+
+section {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+.scroll-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 20px; /* Space between items */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Include padding in the element's width and height calculation */
+  width: 100%;
+}
+
+.scroll-item {
+  background: #eaeaea;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 100px; /* Ensure each item has a minimum height */
+  width: 100%; /* Allow items to take full width */
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.scroll-item:hover {
+  transform: scale(1.1);
+  background: #0077cc;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .scroll-item {
+    min-height: 80px; /* Reduce the height for smaller screens */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-item {
+    min-height: 60px; /* Further reduce the height for mobile screens */
+    padding: 10px; /* Further reduce padding for mobile screens */
+  }
+}
+
+
+
+footer {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  opacity: 1; 
+  transform: translateY(0);
+}
+
+
+.hometext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: clamp(1.5rem, 8vw, 2.6rem); /* Responsive font size using clamp */
+  font-weight: bold;
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  white-space: nowrap;  /* Prevents wrapping of text */
+  overflow: hidden;     /* Prevents text from overflowing */
+  text-align: center;   /* Ensures the text is centered */
+  padding: 0 10px;      /* Optional padding to avoid touching edges */
+  max-width: 100%;      /* Ensures text stays within container width */
+  width: 100%;          /* Ensures text spans across the container */
+  box-sizing: border-box; /* Ensures padding doesn’t mess with width */
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+  .hometext {
+    font-size: clamp(1.2rem, 10vw, 2rem); /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .hometext {
+    font-size: clamp(1rem, 12vw, 1.3rem); /* Adjust font size further for very small screens */
+    padding: 0 5px; /* Add smaller padding for very small screens */
+  }
+}
+
+.history-section {
+  padding: 80px 20px 60px; /* Adjusted top and bottom padding for better fitting */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.history-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.history-section p {
+  max-width: 800px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* Responsive Styles for Tablets */
+@media (max-width: 768px) {
+  .history-section {
+    padding: 60px 15px 40px;
+  }
+
+  .history-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .history-section p {
+    max-width: 90%;
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 480px) {
+  .history-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .history-section p {
+    font-size: 0.9rem;
+    max-width: 95%;
+  }
+}
+header.shrunk .header-image {
+  width: 3.5vw;  /* Shrink the size of images when scrolled */
+  margin-top: 5px;  /* Reduce top margin when scrolled */
+  margin-bottom: 5px;  /* Reduce bottom margin when scrolled */
+}
+
+@media (max-width: 768px) {
+  header.shrunk .header-image {
+    width: 5.3vw;  /* Shrink even more for tablets */
+    margin-top: 6px;  /* Reduce top margin for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  header.shrunk .header-image {
+    width: 7.1vw;  /* Shrink even more for phones */
+    margin-top: 3px;  /* Reduce top margin for phones */
+  }
+}
+
+header.shrunk h1 {
+  font-size: 1.8em;  
+  transition: font-size 0.3s ease, transform 0.3s ease; 
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2em;  
+  }
+
+  header.shrunk h1 {
+    font-size: 1.6em;  
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8em;  
+  }
+
+  header.shrunk h1 {
+    font-size: 1.4em;  
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-button {
+    top: -30px; 
+    font-Size: 1.5rem; /* Smaller font size */
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-button {
+    top: -20px; /* Adjust position further for very small screens */
+    font-Size: 0.5rem;
+}}
+
+/* Default styling */
+.map-section {
+  width: 88vw;
+
+
+}
+
+
+/* For small screens */
+@media (max-width: 768px) {
+  .map-section {
+    width: 90vw;
+  
+  }
+}
+
+/* For extra small screens */
+@media (max-width: 480px) {
+  .map-section {
+
+    width: 100%;
+  }
+}
+
+
+
+/* Hero Section */
+.hero-section {
+  background-image: url("/images/image4.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-section .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.hero-section p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+/* Sections Styling */
+.hero-section {
+  padding: 60px 20px;
+  background-color: #f7f7f7;
+  margin-bottom: 60px;
+}
+
+section h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  text-decoration: underline;
+}
+
+/* Section Content */
+.section-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+.text-block {
+  max-width: 45%;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.image-block {
+  max-width: 45%;
+}
+
+.image-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.large-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Image Gallery */
+.image-gallery {
+  background-color: #f1f1f1;
+  padding: 60px 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+
+  transition: transform 0.3s ease;
+  height: 710px;
+  object-fit: cover; /* Ensures images are cropped to fit */
+}
+
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+
+  .section-content {
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 40px;
+  }
+
+  .text-block, .image-block {
+    max-width: 100%;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-btn {
+    font-size: 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.siol-alpin-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.siol-alpin-title {
+  font-size: 1.44rem;
+  margin-bottom: 20px;
+}
+
+.siol-alpin-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between images and text */
+}
+
+.siol-alpin-image img {
+  width: 150px; /* Adjust size of images */
+  height: auto;
+  object-fit: contain; /* Ensures the image scales proportionally */
+}
+
+.siol-alpin-text {
+  max-width: 500px; /* Restrict text width for readability */
+}
+
+@media (max-width: 768px) {
+
+
+  .siol-alpin-image img {
+    width: 100px; /* Adjust image size for smaller screens */
+  }
+}
+
+
+.image-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.map-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.attribution {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.attribution a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
